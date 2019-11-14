@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "isDotServer", "isDotServer\isDotServer.csproj", "{FC0ED343-E5BD-4CE4-8A26-22BF0437C88D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{5890CFB7-4820-4443-86AD-8A8CA40D4335}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC0ED343-E5BD-4CE4-8A26-22BF0437C88D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0ED343-E5BD-4CE4-8A26-22BF0437C88D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0ED343-E5BD-4CE4-8A26-22BF0437C88D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0ED343-E5BD-4CE4-8A26-22BF0437C88D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5890CFB7-4820-4443-86AD-8A8CA40D4335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5890CFB7-4820-4443-86AD-8A8CA40D4335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5890CFB7-4820-4443-86AD-8A8CA40D4335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5890CFB7-4820-4443-86AD-8A8CA40D4335}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D983712-32E3-4371-A3C6-E7EF669A8FFA}
+	EndGlobalSection
+EndGlobal
