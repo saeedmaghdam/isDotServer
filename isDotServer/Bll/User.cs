@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using isDotServer.DataStructure;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,23 +9,81 @@ namespace isDotServer.Bll
 {
     public class User
     {
-        public void Add()
-        {
-            //var optionsBuilder = new DbContextOptionsBuilder<Models.Context>();
-            //optionsBuilder.UseSqlServer("Server=.;Database=isDotGame;User ID=sa;Password=Abcd@123456;TrustServerCertificate=True;Trusted_Connection=False;Connection Timeout=30;Integrated Security=False;Persist Security Info=False;Encrypt=True;MultipleActiveResultSets=True;", x => x.UseRowNumberForPaging());
-            //optionsBuilder.UseSqlite("Data Source=blog.db");
+        private static ConcurrentList2<Models.User> cache = null;
+        private static ConcurrentList2<Models.User> usersInQueue = null;
 
-            //using (var ctx = new Models.Context(optionsBuilder.Options))
-            //using (var ctx = new Models.Context())
-            //{
-            //    ctx.Users.Add(new Models.User()
-            //    {
-            //        //Id = 1,
-            //        ViewId = Guid.NewGuid(),
-            //        UniqueId = Guid.NewGuid().ToString()
-            //    });
-            //    ctx.SaveChanges();
-            //}
+        IUnitOfWork _unitOfWork;
+        IRepository<Models.User> repo;
+        public User(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+            if (cache == null)
+                cache = new ConcurrentList2<Models.User>();
+            if (usersInQueue == null)
+                usersInQueue = new ConcurrentList2<Models.User>();
+            repo = _unitOfWork.GetRepository<Models.User>(hasCustomRepository: true);
+        }
+
+        public Models.User Get(Models.User user, bool AddIfNotExists = false)
+        {
+            Models.User result = new Models.User();
+            IEnumerable<Models.User> query = cache.Select(x => x);
+            if (!string.IsNullOrEmpty(user.Username))
+                query = cache.Where(x => x.Username == user.Username);
+            if (!string.IsNullOrEmpty(user.UniqueId))
+                query = cache.Where(x => x.UniqueId == user.UniqueId);
+            if (query.Any())
+                result = query.First();
+            else
+            {
+                query = repo.GetAll();
+                if (!string.IsNullOrEmpty(user.Username))
+                    query = cache.Where(x => x.Username == user.Username);
+                if (!string.IsNullOrEmpty(user.UniqueId))
+                    query = cache.Where(x => x.UniqueId == user.UniqueId);
+                if (query.Any())
+                    result = query.First();
+                else
+                {
+                    var newUser = new Models.User()
+                    {
+                        Username = user.Username,
+                        UniqueId = user.UniqueId,
+                        ConnectionId = user.ConnectionId,
+                        ViewId = Guid.NewGuid()
+                    };
+                    repo.Insert(newUser);
+                    _unitOfWork.SaveChanges();
+
+                    result = newUser;
+                }
+
+                cache.Add(result);
+            }
+
+            return result;
+        }
+
+        public Models.User GetFirstWaitingUser()
+        {
+            if (usersInQueue.Any())
+                return usersInQueue.First();
+            else return null;
+        }
+
+        public void RemoveUserFromWaitingQueue(Models.User user)
+        {
+            var userInQueueQuery = usersInQueue.Where(x => x.Id == user.Id);
+            if (userInQueueQuery.Any())
+            {
+                var userInQueue = userInQueueQuery.First();
+                usersInQueue.Remove(userInQueue);
+            }
+        }
+
+        public void AddUserToWaitingQueue(Models.User user)
+        {
+            usersInQueue.Add(user);
         }
     }
 }

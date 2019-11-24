@@ -43,7 +43,8 @@ namespace isDotServer
             //});
             services.AddDbContext<Models.Context>(/*x => x.UseInMemoryDatabase()*/)
                 .AddUnitOfWork<Models.Context>()
-                .AddCustomRepository<Models.User, Models.CustomRepository>();
+                .AddCustomRepository<Models.User, Models.UserRepository>()
+                .AddCustomRepository<Models.GameSession, Models.GameSessionRepository>();
         }
 
         // This method gets called byUpdate-Database the runtime. Use this method to configure the HTTP request pipeline.
