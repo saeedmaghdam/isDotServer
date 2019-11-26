@@ -299,7 +299,7 @@ namespace isDotServer.Hubs
                     await Clients.Groups(new List<string>()
                     {
                         userId.ToString()
-                    }).SendAsync("ItsMyTurn", selectedLineIndex);
+                    }).SendAsync("ItsMyTurn");
                 }
             }
         }
