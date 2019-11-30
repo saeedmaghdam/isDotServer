@@ -49,6 +49,30 @@ namespace isDotServer.Migrations
                     b.ToTable("GameSessions");
                 });
 
+            modelBuilder.Entity("isDotServer.Models.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Amount");
+
+                    b.Property<string>("Coins");
+
+                    b.Property<string>("RefId");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<Guid>("ViewId")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("isDotServer.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -57,9 +81,13 @@ namespace isDotServer.Migrations
 
                     b.Property<string>("Avatar");
 
+                    b.Property<int>("Coins");
+
                     b.Property<string>("ConnectionId");
 
                     b.Property<int>("FailsCount");
+
+                    b.Property<string>("Name");
 
                     b.Property<string>("PhoneNumber");
 
@@ -92,6 +120,14 @@ namespace isDotServer.Migrations
                         .WithMany("GamesAsHost")
                         .HasForeignKey("HostId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("isDotServer.Models.Payment", b =>
+                {
+                    b.HasOne("isDotServer.Models.User", "User")
+                        .WithMany("Payments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

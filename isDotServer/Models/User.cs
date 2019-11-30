@@ -17,14 +17,17 @@ namespace isDotServer.Models
         public string UniqueId { get; set; }
         public string ConnectionId { get; set; }
         public string Username { get; set; }
+        public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public string Avatar { get; set; }
         public int WinsCount { get; set; }
         public int FailsCount { get; set; }
         public int UnfinishedCount { get; set; }
         public int Rate { get; set; }
+        public int Coins { get; set; }
 
         public virtual ICollection<GameSession> GamesAsHost { get; set; }
         public virtual ICollection<GameSession> GamesAsGuest { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }

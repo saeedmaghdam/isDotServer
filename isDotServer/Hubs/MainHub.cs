@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,15 +15,27 @@ namespace isDotServer.Hubs
         public HashSet<string> ConnectionIds { get; set; }
     }
 
+    public class VerificationCode
+    {
+        public string Username { get; set; }
+        public string UserUniqueId { get; set; }
+        public string Code { get; set; }
+        public DateTime ExpireDate { get; set; }
+        public string PhoneNumber { get; set; }
+    }
+
     public class MainHub : Hub
     {
         IUnitOfWork _unitOfWork;
         Bll.User userBll;
         Bll.GameSession gameSessionBll;
+        Bll.Payment paymentBll;
         private static string hostId;
 
         private static readonly ConcurrentDictionary<string, User> Users
             = new ConcurrentDictionary<string, User>(StringComparer.InvariantCultureIgnoreCase);
+        private static readonly DataStructure.ConcurrentList2<VerificationCode> VerificationCodes
+            = new DataStructure.ConcurrentList2<VerificationCode>();
 
         public MainHub(IUnitOfWork unitOfWork)
         {
@@ -279,6 +292,32 @@ namespace isDotServer.Hubs
             }
         }
 
+        public async Task Init(string userUniqueId, string username, string gameSessionViewId)
+        {
+            var user = GetUser(userUniqueId, username).Result;
+
+            if (user != null)
+            {
+                Guid viewId = Guid.NewGuid();
+                if (Guid.TryParse(gameSessionViewId, out viewId))
+                {
+                    var gameSession = gameSessionBll.Get(viewId);
+                    if (gameSession != null)
+                    {
+                        Guid firstPlayerViewId = Guid.Empty;
+                        if (gameSession.WhosTurn == "host")
+                            firstPlayerViewId = gameSession.Host.ViewId;
+                        else if (gameSession.WhosTurn == "guest")
+                            firstPlayerViewId = gameSession.Guest.ViewId;
+                        await Clients.Groups(new List<string>()
+                        {
+                            user.Id.ToString()
+                        }).SendAsync("Init", user.ViewId, firstPlayerViewId, user.Rate, user.Coins);
+                    }
+                }
+            }
+        }
+
         public async Task IPlayedMyTurn(string userUniqueId, string username, String gameSessionViewId, int selectedLineIndex)
         {
             var user = GetUser(userUniqueId, username).Result;
@@ -340,6 +379,167 @@ namespace isDotServer.Hubs
                         gameSession.GuestId.ToString(),
                         gameSession.HostId.ToString()
                     }).SendAsync("TerminateGame");
+            }
+        }
+
+        public async Task Charge(string userUniqueId, string username, string refId, string coins, string amount)
+        {
+            var user = GetUser(userUniqueId, username).Result;
+
+            if (user != null)
+            {
+                paymentBll.Insert(new Models.Payment()
+                {
+                    Amount = amount,
+                    Coins = "error",
+                    RefId = refId,
+                    UserId = user.Id,
+                    ViewId = Guid.NewGuid()
+                });
+
+                int localCoins = 0;
+                if (int.TryParse(coins, out localCoins))
+                {
+                    localCoins += user.Coins;
+                    user.Coins = localCoins;
+                    userBll.Update(user);
+
+                    var userTemp = userBll.GetFromDb(new Models.User()
+                    {
+                        Username = username,
+                        UniqueId = userUniqueId
+                    });
+                    if (userTemp != null)
+                    {
+                        if (userTemp.Coins.Equals(localCoins))
+                        {
+                            // get payment and update it
+
+
+                            // save it to database
+                        }
+                    }
+                }
+            }
+        }
+
+
+        public async Task UpdateName(string userUniqueId, string username, string name)
+        {
+            var user = GetUser(userUniqueId, username).Result;
+
+            if (user != null)
+            {
+                if (!String.IsNullOrEmpty(name))
+                {
+                    user.Name = name;
+
+                    userBll.Update(user);
+
+                    await Clients.Groups(new List<string>()
+                    {
+                        user.Id.ToString()
+                    }).SendAsync("InfoUpdated", user.ViewId);
+                }
+                else
+                {
+                    await Clients.Groups(new List<string>()
+                    {
+                        user.Id.ToString()
+                    }).SendAsync("ErrorOccured", user.ViewId);
+                }
+            }
+        }
+
+        public async Task UpdatePhone(string userUniqueId, string username, string phone)
+        {
+            var user = GetUser(userUniqueId, username).Result;
+
+            if (user != null)
+            {
+                if (!String.IsNullOrEmpty(phone))
+                {
+                    // Create a verification code
+                    Random rnd = new Random();
+                    int p1 = rnd.Next(10, 99);
+                    int p2 = rnd.Next(10, 99);
+                    int p3 = rnd.Next(10, 99);
+                    string code = string.Format("{0}{1}{2}", p1, p2, p3);
+
+                    VerificationCodes.Add(new VerificationCode()
+                    {
+                        Code = code,
+                        ExpireDate = DateTime.UtcNow.AddMinutes(10),
+                        Username = username,
+                        UserUniqueId = userUniqueId,
+                        PhoneNumber = phone
+                    });
+
+                    // Inform use that he'll get a text message and should enter on the phone.
+                    Debug.WriteLine("***    Code    ***");
+
+                    //user.PhoneNumber = phone;
+
+                    //userBll.Update(user);
+
+
+                    await Clients.Groups(new List<string>()
+                    {
+                        user.Id.ToString()
+                    }).SendAsync("TextMessageSent");
+                }
+                else
+                {
+                    await Clients.Groups(new List<string>()
+                    {
+                        user.Id.ToString()
+                    }).SendAsync("ErrorOccured", user.ViewId);
+                }
+            }
+        }
+
+        public async Task VerifyCode(string userUniqueId, string username, string code)
+        {
+            var user = GetUser(userUniqueId, username).Result;
+
+            if (user != null)
+            {
+                IEnumerable<VerificationCode> verificationCodes = VerificationCodes.Select(x => x);
+                if (!string.IsNullOrEmpty(user.Username))
+                    verificationCodes = verificationCodes.Where(x => x.Username == user.Username);
+                if (!string.IsNullOrEmpty(user.UniqueId))
+                    verificationCodes = verificationCodes.Where(x => x.UserUniqueId == user.UniqueId);
+                if (verificationCodes.Any())
+                {
+                    var verificationCode = verificationCodes.First();
+
+                    if (verificationCode.Code.Equals(code))
+                    {
+                        user.PhoneNumber = verificationCode.PhoneNumber;
+                        userBll.Update(user);
+
+                        VerificationCodes.Remove(verificationCode);
+
+                        await Clients.Groups(new List<string>()
+                        {
+                            user.Id.ToString()
+                        }).SendAsync("PhoneVerified");
+                    }
+                    else
+                    {
+                        await Clients.Groups(new List<string>()
+                        {
+                            user.Id.ToString()
+                        }).SendAsync("VerificationCodeError");
+                    }
+                }
+                else
+                {
+                    await Clients.Groups(new List<string>()
+                    {
+                        user.Id.ToString()
+                    }).SendAsync("VerificationError");
+                }
             }
         }
     }

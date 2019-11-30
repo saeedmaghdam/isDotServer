@@ -21,6 +21,7 @@ namespace isDotServer.Models
 
         public DbSet<User> Users { get; set; }
         public DbSet<GameSession> GameSessions { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,6 +45,12 @@ namespace isDotServer.Models
                         .HasForeignKey(x => x.GuestId)
                         .IsRequired()
                         .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Payment>()
+                        .HasOne(x => x.User)
+                        .WithMany(x => x.Payments)
+                        .HasForeignKey(x => x.UserId)
+                        .IsRequired();
         }
     }
 }

@@ -38,9 +38,9 @@ namespace isDotServer.Bll
             {
                 query = repo.GetAll();
                 if (!string.IsNullOrEmpty(user.Username))
-                    query = cache.Where(x => x.Username == user.Username);
+                    query = query.Where(x => x.Username == user.Username);
                 if (!string.IsNullOrEmpty(user.UniqueId))
-                    query = cache.Where(x => x.UniqueId == user.UniqueId);
+                    query = query.Where(x => x.UniqueId == user.UniqueId);
                 if (query.Any())
                     result = query.First();
                 else
@@ -60,6 +60,21 @@ namespace isDotServer.Bll
 
                 cache.Add(result);
             }
+
+            return result;
+        }
+
+        public Models.User GetFromDb(Models.User user)
+        {
+            Models.User result = null;
+
+            IEnumerable<Models.User> query = repo.GetAll();
+            if (!string.IsNullOrEmpty(user.Username))
+                query = cache.Where(x => x.Username == user.Username);
+            if (!string.IsNullOrEmpty(user.UniqueId))
+                query = cache.Where(x => x.UniqueId == user.UniqueId);
+            if (query.Any())
+                result = query.First();
 
             return result;
         }
@@ -84,6 +99,12 @@ namespace isDotServer.Bll
         public void AddUserToWaitingQueue(Models.User user)
         {
             usersInQueue.Add(user);
+        }
+
+        public void Update(Models.User user)
+        {
+            repo.Update(user);
+            _unitOfWork.SaveChanges();
         }
     }
 }
