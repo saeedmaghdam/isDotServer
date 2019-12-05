@@ -31,6 +31,9 @@ namespace isDotServer.Hubs
         Bll.GameSession gameSessionBll;
         Bll.Payment paymentBll;
         private static string hostId;
+        int updateNameCoins = 10;
+        int updatePhoneCoins = 10;
+        int updateAvatarCoins = 20;
 
         private static readonly ConcurrentDictionary<string, User> Users
             = new ConcurrentDictionary<string, User>(StringComparer.InvariantCultureIgnoreCase);
@@ -42,6 +45,7 @@ namespace isDotServer.Hubs
             _unitOfWork = unitOfWork;
             userBll = new Bll.User(unitOfWork);
             gameSessionBll = new Bll.GameSession(unitOfWork);
+            paymentBll = new Bll.Payment(unitOfWork);
         }
 
         // ************************************************************** //
@@ -185,18 +189,22 @@ namespace isDotServer.Hubs
             _unitOfWork.SaveChanges();
         }
 
-        public async Task Test(Boolean val)
-        {
-            await Clients.Groups(new List<string>()
-                {
-                    hostId
-                }).SendAsync("ItsMyTurn");
-        }
+        //public async Task Test(Boolean val)
+        //{
+        //    await Clients.Groups(new List<string>()
+        //        {
+        //            hostId
+        //        }).SendAsync("ItsMyTurn");
+        //}
 
-        public async Task Ack(string Name)
+        public async Task Ack(string userUniqueId, string username)
         {
-            //await Clients.Others.SendAsync("AckResponse", "Hello dear client, I'm " + Name);
-            await Clients.Others.SendAsync("AckResponse");
+            var user = GetUser(userUniqueId, username).Result;
+
+            if (user != null)
+            {
+                await Clients.Caller.SendAsync("Ack", user.ViewId, user.Name, user.PhoneNumber, user.Avatar, user.Coins, user.Rate);
+            }
         }
 
         public async Task SayImHere()
@@ -237,8 +245,11 @@ namespace isDotServer.Hubs
                 await Clients.Groups(new List<string>()
                 {
                     user.Id.ToString(),
+                }).SendAsync("StartTheGame", gameSession.ViewId.ToString(), gameSession.Host.Name);
+                await Clients.Groups(new List<string>()
+                {
                     host.Id.ToString()
-                }).SendAsync("StartTheGame", gameSession.ViewId.ToString());
+                }).SendAsync("StartTheGame", gameSession.ViewId.ToString(), gameSession.Guest.Name);
 
                 //await Clients.Groups(new List<string>()
                 //{
@@ -391,7 +402,7 @@ namespace isDotServer.Hubs
                 paymentBll.Insert(new Models.Payment()
                 {
                     Amount = amount,
-                    Coins = "error",
+                    Coins = coins,
                     RefId = refId,
                     UserId = user.Id,
                     ViewId = Guid.NewGuid()
@@ -404,21 +415,21 @@ namespace isDotServer.Hubs
                     user.Coins = localCoins;
                     userBll.Update(user);
 
-                    var userTemp = userBll.GetFromDb(new Models.User()
-                    {
-                        Username = username,
-                        UniqueId = userUniqueId
-                    });
-                    if (userTemp != null)
-                    {
-                        if (userTemp.Coins.Equals(localCoins))
-                        {
-                            // get payment and update it
+                    //var userTemp = userBll.GetFromDb(new Models.User()
+                    //{
+                    //    Username = username,
+                    //    UniqueId = userUniqueId
+                    //});
+                    //if (userTemp != null)
+                    //{
+                    //    if (userTemp.Coins.Equals(localCoins))
+                    //    {
+                    //        // get payment and update it
 
 
-                            // save it to database
-                        }
-                    }
+                    //        // save it to database
+                    //    }
+                    //}
                 }
             }
         }
@@ -433,20 +444,21 @@ namespace isDotServer.Hubs
                 if (!String.IsNullOrEmpty(name))
                 {
                     user.Name = name;
+                    user.Coins += updateNameCoins;
 
                     userBll.Update(user);
 
                     await Clients.Groups(new List<string>()
                     {
                         user.Id.ToString()
-                    }).SendAsync("InfoUpdated", user.ViewId);
+                    }).SendAsync("NameUpdated");
                 }
                 else
                 {
                     await Clients.Groups(new List<string>()
                     {
                         user.Id.ToString()
-                    }).SendAsync("ErrorOccured", user.ViewId);
+                    }).SendAsync("ErrorOccured");
                 }
             }
         }
@@ -476,7 +488,7 @@ namespace isDotServer.Hubs
                     });
 
                     // Inform use that he'll get a text message and should enter on the phone.
-                    Debug.WriteLine("***    Code    ***");
+                    Debug.WriteLine("***    " + code + "    ***");
 
                     //user.PhoneNumber = phone;
 
@@ -493,7 +505,7 @@ namespace isDotServer.Hubs
                     await Clients.Groups(new List<string>()
                     {
                         user.Id.ToString()
-                    }).SendAsync("ErrorOccured", user.ViewId);
+                    }).SendAsync("ErrorOccured");
                 }
             }
         }
@@ -516,6 +528,7 @@ namespace isDotServer.Hubs
                     if (verificationCode.Code.Equals(code))
                     {
                         user.PhoneNumber = verificationCode.PhoneNumber;
+                        user.Coins += updatePhoneCoins;
                         userBll.Update(user);
 
                         VerificationCodes.Remove(verificationCode);
@@ -530,7 +543,7 @@ namespace isDotServer.Hubs
                         await Clients.Groups(new List<string>()
                         {
                             user.Id.ToString()
-                        }).SendAsync("VerificationCodeError");
+                        }).SendAsync("ErrorOccured");
                     }
                 }
                 else
@@ -538,8 +551,26 @@ namespace isDotServer.Hubs
                     await Clients.Groups(new List<string>()
                     {
                         user.Id.ToString()
-                    }).SendAsync("VerificationError");
+                    }).SendAsync("ErrorOccured");
                 }
+            }
+        }
+
+        public async Task Test()
+        {
+            await Clients.All.SendAsync("Test");
+        }
+
+        public async Task UpdateAvatarFileName(string userUniqueId, string username, string fileName)
+        {
+            var user = GetUser(userUniqueId, username).Result;
+
+            if (user != null)
+            {
+                user.Avatar = fileName;
+                user.Coins += updateAvatarCoins;
+
+                userBll.Update(user);
             }
         }
     }

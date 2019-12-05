@@ -1,0 +1,12 @@
+﻿@model UserViewModel
+
+<form method="post"
+      asp-action="UploadFile"
+      asp-controller="FileUpload"
+      enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input asp-for="Photo" />
+    <span asp-validation-for="Photo" class="text-danger"></span>
+    <input type="submit" value="Upload" />
+</form>
