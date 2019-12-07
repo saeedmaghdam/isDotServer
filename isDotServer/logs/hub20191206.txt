@@ -1,0 +1,464 @@
+2019-12-06 23:33:09.622 +03:30 [INF] Ack:     Called
+2019-12-06 23:33:09.717 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:16.099 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:16.100 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:33:16.123 +03:30 [INF] RiseMyHand:      Called
+2019-12-06 23:33:16.123 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:16.124 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:16.126 +03:30 [INF] RiseMyHand:      Added to waiting queue
+2019-12-06 23:33:36.543 +03:30 [INF] Ack:     Called
+2019-12-06 23:33:36.543 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:36.817 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:36.817 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:33:36.819 +03:30 [INF] RiseMyHand:      Called
+2019-12-06 23:33:36.819 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:36.819 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:36.820 +03:30 [INF] RiseMyHand:      There's a user!
+2019-12-06 23:33:38.113 +03:30 [INF] RiseMyHand:      StartTheGame called in android
+2019-12-06 23:33:38.665 +03:30 [INF] Ack:     Called
+2019-12-06 23:33:38.665 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:38.665 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:38.665 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:33:38.749 +03:30 [INF] Ack:     Called
+2019-12-06 23:33:38.749 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:38.749 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:38.749 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:33:38.752 +03:30 [INF] Init:        Called
+2019-12-06 23:33:38.752 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:38.752 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:38.756 +03:30 [INF] Init:        Called Init on android
+2019-12-06 23:33:39.902 +03:30 [INF] Ack:     Called
+2019-12-06 23:33:39.902 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:39.902 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:39.902 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:33:39.957 +03:30 [INF] Ack:     Called
+2019-12-06 23:33:39.957 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:39.957 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:39.957 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:33:39.957 +03:30 [INF] Init:        Called
+2019-12-06 23:33:39.957 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:39.958 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:39.958 +03:30 [INF] Init:        Called Init on android
+2019-12-06 23:33:42.035 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:42.035 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:42.035 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:42.035 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:42.035 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:42.080 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:42.080 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:42.080 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:42.080 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:42.081 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:43.315 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:43.316 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:43.316 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:43.316 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:43.316 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:43.358 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:43.358 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:43.358 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:43.358 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:43.358 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:44.618 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:44.618 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:44.618 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:44.618 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:44.618 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:44.663 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:44.663 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:44.663 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:44.663 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:44.663 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:45.624 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:45.624 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:45.624 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:45.624 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:45.624 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:45.673 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:45.673 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:45.673 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:45.673 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:45.673 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:46.500 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:46.500 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:46.500 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:46.500 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:46.500 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:46.557 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:46.557 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:46.557 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:46.557 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:46.557 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:47.356 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:47.362 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:47.363 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:47.363 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:47.363 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:47.399 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:47.399 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:47.399 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:47.399 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:47.399 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:48.218 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:48.218 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:48.218 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:48.218 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:48.218 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:48.263 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:48.263 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:48.263 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:48.263 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:48.263 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:49.539 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:49.540 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:49.540 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:49.540 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:49.540 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:49.581 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:49.581 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:49.582 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:49.582 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:49.582 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:50.778 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:50.778 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:50.778 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:50.778 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:50.778 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:50.824 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:50.824 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:50.824 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:50.824 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:50.824 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:52.188 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:52.188 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:52.188 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:52.188 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:52.188 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:52.229 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:52.229 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:52.229 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:52.230 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:52.230 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:53.103 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:53.104 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:53.104 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:53.104 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:53.104 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:53.148 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:53.148 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:53.148 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:53.148 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:53.148 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:53.894 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:53.894 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:53.894 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:53.895 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:53.895 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:53.941 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:53.941 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:53.941 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:53.942 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:53.942 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:54.892 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:54.892 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:54.892 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:54.892 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:54.892 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:54.935 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:54.935 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:54.935 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:54.935 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:54.935 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:55.739 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:55.739 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:55.739 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:55.740 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:55.740 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:55.783 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:55.783 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:55.783 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:55.783 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:55.783 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:57.260 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:57.261 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:57.261 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:57.261 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:57.261 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:57.304 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:33:57.304 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:57.304 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:57.304 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:33:57.304 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:33:58.973 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:58.973 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:58.973 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:58.973 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:58.974 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:33:59.534 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:33:59.534 +03:30 [INF] GetUser:     Called
+2019-12-06 23:33:59.534 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:33:59.534 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:33:59.534 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:34:46.725 +03:30 [INF] Ack:     Called
+2019-12-06 23:34:46.725 +03:30 [INF] GetUser:     Called
+2019-12-06 23:34:46.725 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:34:46.725 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:35:20.367 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:20.374 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:20.487 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:20.487 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:20.547 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:20.548 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:20.591 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:20.591 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:25.449 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:25.449 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:38.708 +03:30 [INF] Ack:     Called
+2019-12-06 23:35:38.708 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:38.708 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:38.708 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:35:41.828 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:41.828 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:48.168 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:48.168 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:54.553 +03:30 [INF] Ack:     Called
+2019-12-06 23:35:54.553 +03:30 [INF] GetUser:     Called
+2019-12-06 23:35:54.553 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:35:54.553 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:36:03.878 +03:30 [INF] GetUser:     Called
+2019-12-06 23:36:03.878 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:36:16.714 +03:30 [INF] GetUser:     Called
+2019-12-06 23:36:16.714 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:37:13.103 +03:30 [INF] Ack:     Called
+2019-12-06 23:37:13.121 +03:30 [INF] GetUser:     Called
+2019-12-06 23:37:15.132 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:37:15.132 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:37:20.508 +03:30 [INF] GetUser:     Called
+2019-12-06 23:37:20.509 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:37:30.126 +03:30 [INF] Ack:     Called
+2019-12-06 23:37:30.126 +03:30 [INF] GetUser:     Called
+2019-12-06 23:37:30.126 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:37:30.126 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:37:40.665 +03:30 [INF] GetUser:     Called
+2019-12-06 23:37:40.665 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:37:48.838 +03:30 [INF] Ack:     Called
+2019-12-06 23:37:48.838 +03:30 [INF] GetUser:     Called
+2019-12-06 23:37:48.838 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:37:48.838 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:01.490 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:01.490 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:01.766 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:01.766 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:01.770 +03:30 [INF] RiseMyHand:      Called
+2019-12-06 23:38:01.770 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:01.770 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:01.771 +03:30 [INF] RiseMyHand:      Added to waiting queue
+2019-12-06 23:38:02.886 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:02.886 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:02.886 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:02.886 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:02.887 +03:30 [INF] RiseMyHand:      Called
+2019-12-06 23:38:02.887 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:02.887 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:02.888 +03:30 [INF] RiseMyHand:      There's a user!
+2019-12-06 23:38:04.017 +03:30 [INF] RiseMyHand:      StartTheGame called in android
+2019-12-06 23:38:04.197 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:04.198 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:04.198 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:04.198 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:04.256 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:04.256 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:04.256 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:04.256 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:04.263 +03:30 [INF] Init:        Called
+2019-12-06 23:38:04.263 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:04.263 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:04.266 +03:30 [INF] Init:        Called Init on android
+2019-12-06 23:38:04.818 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:04.819 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:04.819 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:04.819 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:04.872 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:04.872 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:04.872 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:04.872 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:04.872 +03:30 [INF] Init:        Called
+2019-12-06 23:38:04.872 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:04.872 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:04.873 +03:30 [INF] Init:        Called Init on android
+2019-12-06 23:38:07.035 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:07.035 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:07.035 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:07.035 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:07.035 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:07.078 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:07.078 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:07.078 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:07.078 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:07.078 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:07.869 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:07.869 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:07.870 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:07.870 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:07.870 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:07.914 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:07.914 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:07.914 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:07.914 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:07.914 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:08.682 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:08.682 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:08.682 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:08.682 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:08.682 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:08.724 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:08.724 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:08.724 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:08.725 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:08.725 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:09.756 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:09.756 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:09.756 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:09.756 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:09.756 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:09.801 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:09.801 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:09.802 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:09.802 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:09.802 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:10.579 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:10.579 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:10.580 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:10.580 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:10.580 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:10.619 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:10.620 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:10.620 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:10.620 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:10.620 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:11.291 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:11.291 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:11.291 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:11.292 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:11.292 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:17.243 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:17.243 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:17.243 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:17.243 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:17.244 +03:30 [INF] RiseMyHand:      Called
+2019-12-06 23:38:17.244 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:17.244 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:17.244 +03:30 [INF] RiseMyHand:      Added to waiting queue
+2019-12-06 23:38:17.900 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:17.900 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:17.900 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:17.900 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:17.903 +03:30 [INF] RiseMyHand:      Called
+2019-12-06 23:38:17.903 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:17.903 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:17.903 +03:30 [INF] RiseMyHand:      There's a user!
+2019-12-06 23:38:20.619 +03:30 [INF] RiseMyHand:      StartTheGame called in android
+2019-12-06 23:38:20.868 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:20.869 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:20.869 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:20.869 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:20.915 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:20.915 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:20.915 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:20.915 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:20.916 +03:30 [INF] Init:        Called
+2019-12-06 23:38:20.916 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:20.916 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:20.916 +03:30 [INF] Init:        Called Init on android
+2019-12-06 23:38:20.920 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:20.920 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:20.920 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:20.920 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:21.019 +03:30 [INF] Ack:     Called
+2019-12-06 23:38:21.019 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:21.019 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:21.019 +03:30 [INF] ACK:     Server called ACK on android
+2019-12-06 23:38:21.020 +03:30 [INF] Init:        Called
+2019-12-06 23:38:21.020 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:21.020 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:21.020 +03:30 [INF] Init:        Called Init on android
+2019-12-06 23:38:23.490 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:23.490 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:23.490 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:23.491 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:23.491 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:23.535 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:23.535 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:23.535 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:23.535 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:23.535 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:24.406 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:24.406 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:24.406 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:24.406 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:24.406 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:24.448 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:24.448 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:24.448 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:24.449 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:24.449 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:25.414 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:25.414 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:25.414 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:25.414 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:25.414 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:25.459 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:25.459 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:25.459 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:25.459 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:25.460 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:26.449 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:26.449 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:26.449 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:26.449 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:26.449 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:26.491 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:26.491 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:26.491 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:26.491 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:26.491 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:27.566 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:27.566 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:27.566 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:27.566 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:27.566 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:27.610 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:27.610 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:27.610 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:27.610 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:27.610 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:28.368 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:28.368 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:28.369 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:28.369 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:28.369 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:28.410 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:28.410 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:28.410 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:28.410 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:28.410 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:29.329 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:29.329 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:29.329 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:29.329 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:29.329 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:29.370 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:29.370 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:29.370 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:29.371 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:29.371 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android
+2019-12-06 23:38:30.416 +03:30 [INF] SelectALine:     Called
+2019-12-06 23:38:30.416 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:30.416 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:30.416 +03:30 [INF] SelectALine:         Got game session information
+2019-12-06 23:38:30.416 +03:30 [INF] SelectALine:        Calling SelectALine on android
+2019-12-06 23:38:30.457 +03:30 [INF] IPlayedMyTurn:       Called
+2019-12-06 23:38:30.457 +03:30 [INF] GetUser:     Called
+2019-12-06 23:38:30.457 +03:30 [INF] GetUser:     User added to hub's group
+2019-12-06 23:38:30.457 +03:30 [INF] IPlayedMyTurn:       Got game session information
+2019-12-06 23:38:30.457 +03:30 [INF] IPlayedMyTurn:       Calling ItsMyTurn on android

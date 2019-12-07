@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace isDotServer.Hubs
         int updateNameCoins = 10;
         int updatePhoneCoins = 10;
         int updateAvatarCoins = 20;
+        Serilog.Core.Logger log;
 
         private static readonly ConcurrentDictionary<string, User> Users
             = new ConcurrentDictionary<string, User>(StringComparer.InvariantCultureIgnoreCase);
@@ -42,6 +44,11 @@ namespace isDotServer.Hubs
 
         public MainHub(IUnitOfWork unitOfWork)
         {
+            //log = new LoggerConfiguration()
+            //    .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+            //    .CreateLogger();
+            //log.Information("Initialized");
+            //Program.HubLogger.Information("Hub Initialized");
             _unitOfWork = unitOfWork;
             userBll = new Bll.User(unitOfWork);
             gameSessionBll = new Bll.GameSession(unitOfWork);
@@ -187,6 +194,7 @@ namespace isDotServer.Hubs
                 Username = "Test"
             });
             _unitOfWork.SaveChanges();
+
         }
 
         //public async Task Test(Boolean val)
@@ -199,10 +207,12 @@ namespace isDotServer.Hubs
 
         public async Task Ack(string userUniqueId, string username)
         {
+            Program.HubLogger.Information("Ack:     Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
             {
+                Program.HubLogger.Information("ACK:     Server called ACK on android");
                 await Clients.Caller.SendAsync("Ack", user.ViewId, user.Name, user.PhoneNumber, user.Avatar, user.Coins, user.Rate);
             }
         }
@@ -216,11 +226,13 @@ namespace isDotServer.Hubs
         private async Task<Models.User> GetUser(string userUniqueId, string username)
         {
             // get current users information
+            Program.HubLogger.Information("GetUser:     Called");
             var user = userBll.Get(new Models.User()
             {
                 Username = username,
                 UniqueId = userUniqueId
             });
+            Program.HubLogger.Information("GetUser:     User added to hub's group");
             await Groups.AddToGroupAsync(Context.ConnectionId, user.Id.ToString());
 
             return user;
@@ -228,6 +240,7 @@ namespace isDotServer.Hubs
 
         public async Task RiseMyHand(string userUniqueId, string username)
         {
+            Program.HubLogger.Information("RiseMyHand:      Called");
             var user = GetUser(userUniqueId, username).Result;
 
             // Check if there's anyone to play together
@@ -235,6 +248,7 @@ namespace isDotServer.Hubs
             var host = userBll.GetFirstWaitingUser();
             if (userBll.GetFirstWaitingUser() != null && !user.UniqueId.Equals(host.UniqueId))
             {
+                Program.HubLogger.Information("RiseMyHand:      There's a user!");
                 // Create a new game session
                 var gameSession = gameSessionBll.Insert(host, user);
 
@@ -242,10 +256,12 @@ namespace isDotServer.Hubs
                 userBll.RemoveUserFromWaitingQueue(host);
 
                 // Inform both users to start the game and send relevent information including the campatitor's name, avatar, game session viewId
+                Program.HubLogger.Information("RiseMyHand:      StartTheGame called in android");
                 await Clients.Groups(new List<string>()
                 {
                     user.Id.ToString(),
                 }).SendAsync("StartTheGame", gameSession.ViewId.ToString(), gameSession.Host.Name);
+
                 await Clients.Groups(new List<string>()
                 {
                     host.Id.ToString()
@@ -260,6 +276,7 @@ namespace isDotServer.Hubs
             }
             else
             {
+                Program.HubLogger.Information("RiseMyHand:      Added to waiting queue");
                 userBll.AddUserToWaitingQueue(user);
             }
         }
@@ -279,13 +296,16 @@ namespace isDotServer.Hubs
 
         public async Task WhosTurn(string userUniqueId, string username, string gameSessionViewId)
         {
+            Program.HubLogger.Information("WhosTurn:        Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
             {
                 Guid viewId = Guid.NewGuid();
+                Program.HubLogger.Information("WhosTurn:        Getting game session information");
                 if (Guid.TryParse(gameSessionViewId, out viewId))
                 {
+                    Program.HubLogger.Information("WhosTurn:        Got game session information");
                     var gameSession = gameSessionBll.Get(viewId);
                     if (gameSession != null)
                     {
@@ -294,6 +314,8 @@ namespace isDotServer.Hubs
                             userViewId = gameSession.Host.ViewId;
                         else if (gameSession.WhosTurn == "guest")
                             userViewId = gameSession.Guest.ViewId;
+
+                        Program.HubLogger.Information("WhosTurn:        Called WhosTurn on android");
                         await Clients.Groups(new List<string>()
                         {
                             user.Id.ToString()
@@ -305,6 +327,7 @@ namespace isDotServer.Hubs
 
         public async Task Init(string userUniqueId, string username, string gameSessionViewId)
         {
+            Program.HubLogger.Information("Init:        Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
@@ -320,6 +343,8 @@ namespace isDotServer.Hubs
                             firstPlayerViewId = gameSession.Host.ViewId;
                         else if (gameSession.WhosTurn == "guest")
                             firstPlayerViewId = gameSession.Guest.ViewId;
+
+                        Program.HubLogger.Information("Init:        Called Init on android");
                         await Clients.Groups(new List<string>()
                         {
                             user.Id.ToString()
@@ -331,6 +356,7 @@ namespace isDotServer.Hubs
 
         public async Task IPlayedMyTurn(string userUniqueId, string username, String gameSessionViewId, int selectedLineIndex)
         {
+            Program.HubLogger.Information("IPlayedMyTurn:       Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
@@ -338,6 +364,7 @@ namespace isDotServer.Hubs
                 Guid viewId = Guid.Empty;
                 if (Guid.TryParse(gameSessionViewId, out viewId))
                 {
+                    Program.HubLogger.Information("IPlayedMyTurn:       Got game session information");
                     var gameSession = gameSessionBll.Get(viewId);
                     gameSessionBll.ChangeTurn(gameSession);
 
@@ -346,16 +373,21 @@ namespace isDotServer.Hubs
                         userId = gameSession.Host.Id;
                     else if (gameSession.WhosTurn == "guest")
                         userId = gameSession.Guest.Id;
+
+                    Program.HubLogger.Information("IPlayedMyTurn:       Calling ItsMyTurn on android");
                     await Clients.Groups(new List<string>()
                     {
                         userId.ToString()
                     }).SendAsync("ItsMyTurn");
+
+                    iPlayedMyTurnCounter++;
                 }
             }
         }
 
         public async Task SelectALine(string userUniqueId, string username, string gameSessionViewId, int selectedLineIndex)
         {
+            Program.HubLogger.Information("SelectALine:     Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
@@ -363,6 +395,7 @@ namespace isDotServer.Hubs
                 Guid viewId = Guid.Empty;
                 if (Guid.TryParse(gameSessionViewId, out viewId))
                 {
+                    Program.HubLogger.Information("SelectALine:         Got game session information");
                     var gameSession = gameSessionBll.Get(viewId);
 
                     int userId = -1;
@@ -370,12 +403,30 @@ namespace isDotServer.Hubs
                         userId = gameSession.Guest.Id;
                     else if (gameSession.WhosTurn == "guest")
                         userId = gameSession.Host.Id;
+
+                    Program.HubLogger.Information("SelectALine:        Calling SelectALine on android");
                     await Clients.Groups(new List<string>()
                     {
                         userId.ToString()
                     }).SendAsync("SelectALine", selectedLineIndex);
+
+                    selectALineCounter++;
                 }
             }
+        }
+
+        private static int selectALineCounter = 0;
+        private static int iPlayedMyTurnCounter = 0;
+
+        public async Task StartTest()
+        {
+            selectALineCounter = 0;
+            iPlayedMyTurnCounter = 0;
+        }
+
+        public async Task EndTest()
+        {
+            await Clients.Caller.SendAsync("TestResult", selectALineCounter, iPlayedMyTurnCounter);
         }
 
         public async Task TerminateGame(string gameSessionViewId)
@@ -437,24 +488,30 @@ namespace isDotServer.Hubs
 
         public async Task UpdateName(string userUniqueId, string username, string name)
         {
+            //Program.HubLogger.Information("UpdateName");
+            //log.Information("+++ UpdateName");
             var user = GetUser(userUniqueId, username).Result;
-
+            //Program.HubLogger.Information("User: " + user.Id + "    " + user.Name);
             if (user != null)
             {
                 if (!String.IsNullOrEmpty(name))
                 {
+                    if (string.IsNullOrEmpty(user.Name))
+                        user.Coins += updateNameCoins;
                     user.Name = name;
-                    user.Coins += updateNameCoins;
 
+                    //Program.HubLogger.Information("Getting update the user's name");
                     userBll.Update(user);
-
+                    //Program.HubLogger.Information("It's updated");
                     await Clients.Groups(new List<string>()
                     {
                         user.Id.ToString()
                     }).SendAsync("NameUpdated");
+                    //Program.HubLogger.Information("Called android's NameUpdated method");
                 }
                 else
                 {
+                    //Program.HubLogger.Information("Input name was empty!");
                     await Clients.Groups(new List<string>()
                     {
                         user.Id.ToString()
@@ -489,6 +546,10 @@ namespace isDotServer.Hubs
 
                     // Inform use that he'll get a text message and should enter on the phone.
                     Debug.WriteLine("***    " + code + "    ***");
+                    //var log = new LoggerConfiguration()
+                    //    .WriteTo.File("VerificationCode.txt", rollingInterval: RollingInterval.Day)
+                    //    .CreateLogger();
+                    //log.Information(phone + "           " + code);
 
                     //user.PhoneNumber = phone;
 
@@ -498,7 +559,7 @@ namespace isDotServer.Hubs
                     await Clients.Groups(new List<string>()
                     {
                         user.Id.ToString()
-                    }).SendAsync("TextMessageSent");
+                    }).SendAsync("TextMessageSent", code);
                 }
                 else
                 {
