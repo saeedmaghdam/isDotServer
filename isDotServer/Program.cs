@@ -78,16 +78,18 @@ namespace isDotServer
 
 
 
-            var host = CreateWebHostBuilder(args).Build();
+            //var host = CreateWebHostBuilder(args).Build();
 
 
-            //var host = new WebHostBuilder()
-            //    .UseKestrel()
-            //    .UseContentRoot(Directory.GetCurrentDirectory())
-            //    .UseUrls("http://localhost:5000", "http://odin:5000", "http://192.168.1.253:5000")
-            //    .UseIISIntegration()
-            //    .UseStartup<Startup>()
-            //    .Build();
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                //.UseUrls("http://localhost:5000", "http://odin:5000", "http://192.168.0.115:5000")
+                //.UseUrls("http://localhost:5000", "http://odin:5000", "http://192.168.1.253:5000")
+                .UseUrls("http://localhost:5000", "http://odin:5000", "http://192.168.1.254:5001")
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
 
             host.Run();
         }

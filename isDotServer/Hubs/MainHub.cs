@@ -207,12 +207,12 @@ namespace isDotServer.Hubs
 
         public async Task Ack(string userUniqueId, string username)
         {
-            Program.HubLogger.Information("Ack:     Called");
+            //Program.HubLogger.Information("Ack:     Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
             {
-                Program.HubLogger.Information("ACK:     Server called ACK on android");
+                //Program.HubLogger.Information("ACK:     Server called ACK on android");
                 await Clients.Caller.SendAsync("Ack", user.ViewId, user.Name, user.PhoneNumber, user.Avatar, user.Coins, user.Rate);
             }
         }
@@ -226,13 +226,13 @@ namespace isDotServer.Hubs
         private async Task<Models.User> GetUser(string userUniqueId, string username)
         {
             // get current users information
-            Program.HubLogger.Information("GetUser:     Called");
+            //Program.HubLogger.Information("GetUser:     Called");
             var user = userBll.Get(new Models.User()
             {
                 Username = username,
                 UniqueId = userUniqueId
             });
-            Program.HubLogger.Information("GetUser:     User added to hub's group");
+            //Program.HubLogger.Information("GetUser:     User added to hub's group");
             await Groups.AddToGroupAsync(Context.ConnectionId, user.Id.ToString());
 
             return user;
@@ -240,7 +240,8 @@ namespace isDotServer.Hubs
 
         public async Task RiseMyHand(string userUniqueId, string username)
         {
-            Program.HubLogger.Information("RiseMyHand:      Called");
+            Console.WriteLine(string.Format("{0}:     RiseMyHand", userUniqueId));
+            //Program.HubLogger.Information("RiseMyHand:      Called");
             var user = GetUser(userUniqueId, username).Result;
 
             // Check if there's anyone to play together
@@ -248,7 +249,7 @@ namespace isDotServer.Hubs
             var host = userBll.GetFirstWaitingUser();
             if (userBll.GetFirstWaitingUser() != null && !user.UniqueId.Equals(host.UniqueId))
             {
-                Program.HubLogger.Information("RiseMyHand:      There's a user!");
+                //Program.HubLogger.Information("RiseMyHand:      There's a user!");
                 // Create a new game session
                 var gameSession = gameSessionBll.Insert(host, user);
 
@@ -256,7 +257,7 @@ namespace isDotServer.Hubs
                 userBll.RemoveUserFromWaitingQueue(host);
 
                 // Inform both users to start the game and send relevent information including the campatitor's name, avatar, game session viewId
-                Program.HubLogger.Information("RiseMyHand:      StartTheGame called in android");
+                //Program.HubLogger.Information("RiseMyHand:      StartTheGame called in android");
                 await Clients.Groups(new List<string>()
                 {
                     user.Id.ToString(),
@@ -276,7 +277,7 @@ namespace isDotServer.Hubs
             }
             else
             {
-                Program.HubLogger.Information("RiseMyHand:      Added to waiting queue");
+                //Program.HubLogger.Information("RiseMyHand:      Added to waiting queue");
                 userBll.AddUserToWaitingQueue(user);
             }
         }
@@ -296,16 +297,16 @@ namespace isDotServer.Hubs
 
         public async Task WhosTurn(string userUniqueId, string username, string gameSessionViewId)
         {
-            Program.HubLogger.Information("WhosTurn:        Called");
+            //Program.HubLogger.Information("WhosTurn:        Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
             {
                 Guid viewId = Guid.NewGuid();
-                Program.HubLogger.Information("WhosTurn:        Getting game session information");
+                //Program.HubLogger.Information("WhosTurn:        Getting game session information");
                 if (Guid.TryParse(gameSessionViewId, out viewId))
                 {
-                    Program.HubLogger.Information("WhosTurn:        Got game session information");
+                    //Program.HubLogger.Information("WhosTurn:        Got game session information");
                     var gameSession = gameSessionBll.Get(viewId);
                     if (gameSession != null)
                     {
@@ -315,7 +316,7 @@ namespace isDotServer.Hubs
                         else if (gameSession.WhosTurn == "guest")
                             userViewId = gameSession.Guest.ViewId;
 
-                        Program.HubLogger.Information("WhosTurn:        Called WhosTurn on android");
+                        //Program.HubLogger.Information("WhosTurn:        Called WhosTurn on android");
                         await Clients.Groups(new List<string>()
                         {
                             user.Id.ToString()
@@ -327,7 +328,7 @@ namespace isDotServer.Hubs
 
         public async Task Init(string userUniqueId, string username, string gameSessionViewId)
         {
-            Program.HubLogger.Information("Init:        Called");
+            //Program.HubLogger.Information("Init:        Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
@@ -344,7 +345,7 @@ namespace isDotServer.Hubs
                         else if (gameSession.WhosTurn == "guest")
                             firstPlayerViewId = gameSession.Guest.ViewId;
 
-                        Program.HubLogger.Information("Init:        Called Init on android");
+                        //Program.HubLogger.Information("Init:        Called Init on android");
                         await Clients.Groups(new List<string>()
                         {
                             user.Id.ToString()
@@ -356,7 +357,8 @@ namespace isDotServer.Hubs
 
         public async Task IPlayedMyTurn(string userUniqueId, string username, String gameSessionViewId, int selectedLineIndex)
         {
-            Program.HubLogger.Information("IPlayedMyTurn:       Called");
+            Console.WriteLine(string.Format("{0}:     IPlayedMyTurn", userUniqueId));
+            //Program.HubLogger.Information("IPlayedMyTurn:       Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
@@ -364,7 +366,7 @@ namespace isDotServer.Hubs
                 Guid viewId = Guid.Empty;
                 if (Guid.TryParse(gameSessionViewId, out viewId))
                 {
-                    Program.HubLogger.Information("IPlayedMyTurn:       Got game session information");
+                    //Program.HubLogger.Information("IPlayedMyTurn:       Got game session information");
                     var gameSession = gameSessionBll.Get(viewId);
                     gameSessionBll.ChangeTurn(gameSession);
 
@@ -374,20 +376,21 @@ namespace isDotServer.Hubs
                     else if (gameSession.WhosTurn == "guest")
                         userId = gameSession.Guest.Id;
 
-                    Program.HubLogger.Information("IPlayedMyTurn:       Calling ItsMyTurn on android");
+                    //Program.HubLogger.Information("IPlayedMyTurn:       Calling ItsMyTurn on android");
                     await Clients.Groups(new List<string>()
                     {
                         userId.ToString()
                     }).SendAsync("ItsMyTurn");
 
-                    iPlayedMyTurnCounter++;
+                    //iPlayedMyTurnCounter++;
                 }
             }
         }
 
         public async Task SelectALine(string userUniqueId, string username, string gameSessionViewId, int selectedLineIndex)
         {
-            Program.HubLogger.Information("SelectALine:     Called");
+            Console.WriteLine(string.Format("{0}:     SelectALine", userUniqueId));
+            //Program.HubLogger.Information("SelectALine:     Called");
             var user = GetUser(userUniqueId, username).Result;
 
             if (user != null)
@@ -395,7 +398,7 @@ namespace isDotServer.Hubs
                 Guid viewId = Guid.Empty;
                 if (Guid.TryParse(gameSessionViewId, out viewId))
                 {
-                    Program.HubLogger.Information("SelectALine:         Got game session information");
+                    //Program.HubLogger.Information("SelectALine:         Got game session information");
                     var gameSession = gameSessionBll.Get(viewId);
 
                     int userId = -1;
@@ -404,30 +407,30 @@ namespace isDotServer.Hubs
                     else if (gameSession.WhosTurn == "guest")
                         userId = gameSession.Host.Id;
 
-                    Program.HubLogger.Information("SelectALine:        Calling SelectALine on android");
+                    //Program.HubLogger.Information("SelectALine:        Calling SelectALine on android");
                     await Clients.Groups(new List<string>()
                     {
                         userId.ToString()
                     }).SendAsync("SelectALine", selectedLineIndex);
 
-                    selectALineCounter++;
+                    //selectALineCounter++;
                 }
             }
         }
 
-        private static int selectALineCounter = 0;
-        private static int iPlayedMyTurnCounter = 0;
+        //private static int selectALineCounter = 0;
+        //private static int iPlayedMyTurnCounter = 0;
 
-        public async Task StartTest()
-        {
-            selectALineCounter = 0;
-            iPlayedMyTurnCounter = 0;
-        }
+        //public async Task StartTest()
+        //{
+        //    selectALineCounter = 0;
+        //    iPlayedMyTurnCounter = 0;
+        //}
 
-        public async Task EndTest()
-        {
-            await Clients.Caller.SendAsync("TestResult", selectALineCounter, iPlayedMyTurnCounter);
-        }
+        //public async Task EndTest()
+        //{
+        //    await Clients.Caller.SendAsync("TestResult", selectALineCounter, iPlayedMyTurnCounter);
+        //}
 
         public async Task TerminateGame(string gameSessionViewId)
         {
